@@ -27,11 +27,8 @@ def message(payload):
     text = event.get('text')
     
     if BOT_ID != user_id: 
-        if user_id in message_counts: 
-            message_counts[user_id] += 1
-        else: 
-            message_counts[user_id] = 1
-        client.chat_postMessage(channel=channel_id, text=text)
+        if  text.endswith('?'):
+            client.chat_postMessage(channel=channel_id, text=text)
 
 @app.route('/message-count', methods=['POST'])
 def message_count(): 
