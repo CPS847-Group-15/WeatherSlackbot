@@ -69,7 +69,7 @@ def weather():
     """
     # This just uses the name.
     url = f"{weather_api}q={city_name}&appid={weather_api_key}"
-    request = requests.request("GET", url).json()
+    weather = requests.request("GET", url).json()
     if weather['cod'] == '200':
         response = f"The Weather in {weather['name']} is {weather['weather'][0]['main']}: {weather['weather'][0]['description']}. It's {round(weather['main']['temp'] - 273.15,1)} degrees Celsius."
         client.chat_postMessage(channel=channel_id, text=response)
